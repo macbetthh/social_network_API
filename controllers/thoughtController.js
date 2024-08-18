@@ -93,22 +93,27 @@ module.exports = {
     }
   },
 
-  // Remove a reaction from a thought
+  // Remove a reaction from a thought -- logs added to address issues with this process in Insomnia
   async removeReaction(req, res) {
     try {
+      console.log("Thought ID:", req.params.thoughtId);
+      console.log("Reaction ID:", req.params.reactionId);
+  
       const thought = await Thought.findOneAndUpdate(
         { _id: req.params.thoughtId },
-        { $pull: { reactions: { reactionId: req.params.reactionId } } },
+        { $pull: { reactions: { reactionId: req.params.reactionId.toString() } } },
         { new: true }
       );
-
+  
       if (!thought) {
         return res.status(404).json({ message: 'No thought found with this ID!' });
       }
-
+  
       res.json(thought);
     } catch (err) {
+      console.error("Error removing reaction:", err);
       res.status(500).json(err);
     }
-  },
-};
+  }
+  
+}
