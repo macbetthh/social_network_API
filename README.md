@@ -10,6 +10,12 @@ This is a RESTful API for a social network web application where users can share
 2. Navigate to the project directory.
 3. Run `npm install` to install all dependencies.
 
+## Video Walkthrough of the Endpoints working as intended
+
+
+https://github.com/user-attachments/assets/a1795cb4-c621-4cd1-b9c5-ad8b1f025cfe
+
+
 
 ## Usage
 
